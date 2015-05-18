@@ -12,17 +12,11 @@ public class Happy_ticket {
         System.out.println("Please enter the number of ticket: ");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String s1 = reader.readLine();
+        int num = Integer.parseInt(s1);
 
-        int num;
-
-        final int MIN_TICKET_VALUE = 100000;
-        final int MAX_TICKET_VALUE = 999999;
         try{
-            num = Integer.parseInt(s1);
-
-            if ((num < MIN_TICKET_VALUE) || (num > MAX_TICKET_VALUE)) {
-                System.out.println("Oops, not a ticket");
-            } else {
+            if (checkCondition(num) == false) {System.out.println("Oops, not a ticket");}
+            else {
                 if (if_happy(num) == true) {System.out.println("Happy!");}
                 else {System.out.println("Not happy :(");}
             }
@@ -33,14 +27,24 @@ public class Happy_ticket {
 
     }
 
+    public static boolean checkCondition(int n){
+        final int MIN_TICKET_VALUE = 100000;
+        final int MAX_TICKET_VALUE = 999999;
+
+        if ((n < MIN_TICKET_VALUE) || (n > MAX_TICKET_VALUE)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public static boolean if_happy(int n){
         int sum1 = half_sum(n % 1000);
         int sum2 = half_sum(n / 1000);
-        if (sum1 == sum2) {return true;}
-        else {return false;}
+        if (sum1 == sum2) return true;
+        else return false;
     }
 
-    //вычисляем сумму трех цифр
     public static int half_sum(int n){
         int sum = 0;
         while (n > 0){

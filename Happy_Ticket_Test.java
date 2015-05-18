@@ -24,7 +24,36 @@ public class Happy_Ticket_Test {
 
     @Test
     public void testIfHappy(){
-        Assert.assertTrue(Happy_ticket.if_happy(ticketNumber) == true);
+        Assert.assertTrue(Happy_ticket.if_happy(ticketNumber));
     }
 
+    @Test
+    public void testCheckCondition0(){
+        int ticket = 100000;
+        Assert.assertTrue(Happy_ticket.checkCondition(ticket));
+    }
+
+    @Test
+    public void testCheckCondition1(){
+        int ticket = 999999;
+        Assert.assertTrue(Happy_ticket.checkCondition(ticket));
+    }
+
+    @Test
+    public void testCheckCondition2(){
+        int ticket = 123501;
+        Assert.assertTrue(Happy_ticket.checkCondition(ticket));
+    }
+
+    @Test
+    public void testCheckCondition3(){
+        int ticket = 1234567;
+        Assert.assertTrue(Happy_ticket.checkCondition(ticket) == false);
+    }
+
+    @Test
+    public void testCheckCondition4(){
+        int ticket = 12345;
+        Assert.assertTrue(Happy_ticket.checkCondition(ticket) == false);
+    }
 }
